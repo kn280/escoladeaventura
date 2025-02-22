@@ -52,6 +52,7 @@
 
         .options {
             display: flex;
+            flex-direction: row;
             justify-content: center;
             gap: 20px;
             margin-top: 20px;
@@ -82,6 +83,19 @@
             color: white;
             position: relative;
         }
+
+        .instagram-container {
+            margin-top: 10px;
+            display: none;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.2rem;
+        }
+
+        .instagram-container img {
+            width: 50px;
+            height: 50px;
+        }
     </style>
 </head>
 <body>
@@ -89,19 +103,27 @@
         <div class="image-container">
             <img src="escola.jpeg" alt="Imagem da Escola">
         </div>
-        <div class="question-container">
+        <div class="question-container" id="questionContainer">
             <p class="question">Vai no rapel?</p>
         </div>
-        <div class="options">
+        <div class="options" id="optionsContainer">
             <button class="option" id="sim">Sim</button>
             <button class="option" id="nao">Não</button>
+        </div>
+        <div class="instagram-container" id="instagramContainer">
+            <a href="https://www.instagram.com/escoladeaventura.es?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">
+                <img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png" alt="Instagram">
+            </a>
         </div>
     </div>
     
     <script>
         let naoBtn = document.getElementById("nao");
-        let optionsContainer = document.querySelector(".options");
-        
+        let optionsContainer = document.getElementById("optionsContainer");
+        let simBtn = document.getElementById("sim");
+        let instagramContainer = document.getElementById("instagramContainer");
+        let questionContainer = document.getElementById("questionContainer");
+
         document.addEventListener("mousemove", function(event) {
             let rect = naoBtn.getBoundingClientRect();
             let mouseX = event.clientX;
@@ -121,8 +143,15 @@
                 naoBtn.style.top = `${newY}px`;
             }
         });
+
+        simBtn.addEventListener("click", function() {
+            optionsContainer.style.display = "none";
+            questionContainer.style.display = "none";
+            instagramContainer.style.display = "flex";
+        });
     </script>
 </body>
 </html>
+
 
 
