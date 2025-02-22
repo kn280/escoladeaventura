@@ -34,6 +34,7 @@
             height: 500px;
             text-align: center;
             border: 4px solid #4CAF50;
+            position: relative;
         }
 
         .image-container img {
@@ -64,6 +65,7 @@
             border: none;
             border-radius: 5px;
             transition: 0.3s;
+            position: relative;
         }
 
         #sim {
@@ -78,10 +80,6 @@
         #nao {
             background-color: #FF9800;
             color: white;
-        }
-
-        #nao:hover {
-            background-color: #e68900;
         }
     </style>
 </head>
@@ -98,6 +96,20 @@
             <button class="option" id="nao">Não</button>
         </div>
     </div>
+    
+    <script>
+        document.getElementById("nao").addEventListener("mouseover", function() {
+            let btn = this;
+            let optionsContainer = document.querySelector(".options");
+            let maxX = optionsContainer.clientWidth - btn.clientWidth;
+            let maxY = optionsContainer.clientHeight - btn.clientHeight;
+            let newX = Math.random() * maxX;
+            let newY = Math.random() * maxY;
+            btn.style.position = "absolute";
+            btn.style.left = `${newX}px`;
+            btn.style.top = `${newY}px`;
+        });
+    </script>
 </body>
 </html>
 
